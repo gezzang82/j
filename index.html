@@ -67,6 +67,8 @@ body {
   font-family: var(--font-ko);
   font-weight: 300;
   line-height: 1.7;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -75,10 +77,14 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 18px 28px;
+  padding: 18px 28px 36px;
   display: flex;
   align-items: center;
+  /* 로고가 어떤 배경 위에서도 보이도록 상단만 옅은 어두운 그라데이션 */
+  background: linear-gradient(to bottom, rgba(15,12,8,0.45) 0%, rgba(15,12,8,0.22) 45%, transparent 100%);
+  pointer-events: none;
 }
+nav .nav-logo { pointer-events: auto; }
 .nav-logo {
   display: flex;
   align-items: center;
@@ -92,7 +98,7 @@ nav {
 }
 .nav-label {
   font-family: var(--font-serif);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.15em;
   color: var(--white-dim);
   font-style: italic;
@@ -155,14 +161,14 @@ nav {
 .hero .hero-scroll { position: absolute; } /* 화살표는 하단 고정 유지 */
 .hero-eyebrow {
   font-family: var(--font-en);
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.06em;
   color: #F0E3C0;
   margin-bottom: 20px;
 }
 .hero-title {
   font-family: var(--font-en);
-  font-size: clamp(40px, 10vw, 84px);
+  font-size: clamp(42px, 10vw, 86px);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.01em;
@@ -177,7 +183,7 @@ nav {
 .hero-title em { font-style: normal; }
 .hero-subtitle {
   font-family: var(--font-ko);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.4em;
   color: var(--white-dim);
@@ -186,7 +192,7 @@ nav {
 }
 .hero-desc {
   font-family: var(--font-ko);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: var(--white);
   line-height: 1.9;
@@ -203,7 +209,7 @@ nav {
   align-items: center;
   gap: 8px;
   color: rgba(255,255,255,0.75);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -226,8 +232,8 @@ nav {
 .intro-section-inner { max-width: 480px; margin: 0 auto; }
 .intro-quote {
   font-family: var(--font-ko);
-  font-size: clamp(20px, 5vw, 28px);
-  font-weight: 700;
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 500;
   color: var(--white);
   line-height: 1.5;
   margin-bottom: 32px;
@@ -235,7 +241,7 @@ nav {
 }
 .intro-body {
   font-family: var(--font-ko);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   color: var(--white-dim);
   line-height: 1.95;
@@ -267,7 +273,7 @@ nav {
 }
 .bridge-caption p {
   font-family: var(--font-serif);
-  font-size: 17px;
+  font-size: 19px;
   font-style: italic;
   color: rgba(255,255,255,0.92);
   letter-spacing: 0.04em;
@@ -287,7 +293,7 @@ section.cream-dark {
 
 .eyebrow {
   font-family: var(--font-en);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.4em;
   color: var(--tobacco-light);
@@ -296,7 +302,7 @@ section.cream-dark {
 }
 .section-title {
   font-family: var(--font-ko);
-  font-size: clamp(24px, 6vw, 36px);
+  font-size: clamp(26px, 6vw, 38px);
   font-weight: 500;
   color: var(--cream-text);
   line-height: 1.3;
@@ -305,7 +311,7 @@ section.cream-dark {
 .section-title.serif {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: clamp(28px, 7vw, 44px);
+  font-size: clamp(30px, 7vw, 46px);
 }
 .rule {
   width: 32px;
@@ -331,7 +337,7 @@ section.cream-dark {
   background: none;
   border: none;
   font-family: var(--font-ko);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--cream-dim);
   cursor: pointer;
@@ -354,10 +360,17 @@ section.cream-dark {
 /* ── GOLD TABS ── */
 .gold-tabs {
   display: flex;
-  gap: 6px;
+  gap: 18px;
   margin-bottom: 32px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 4px 3px;
+  margin-left: -3px;
 }
+.gold-tabs::-webkit-scrollbar { display: none; }
+.gold-tab { white-space: nowrap; flex-shrink: 0; }
 .gold-tab {
   display: inline-flex;
   align-items: center;
@@ -366,7 +379,7 @@ section.cream-dark {
   border: none;
   background: none;
   font-family: var(--font-ko);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--cream-dim);
   cursor: pointer;
@@ -403,7 +416,7 @@ section.cream-dark {
 
 /* ── CARD STAGE ── */
 .card-stage {
-  padding: 24px 0 0;
+  padding: 4px 0 0;
   margin-bottom: 36px;
 }
 .card-stage .flip-hint { margin-bottom: 0; margin-top: 24px; }
@@ -452,27 +465,45 @@ section.cream-dark {
   overflow: hidden;
   pointer-events: none;
 }
+/* 부드럽게 훑고 지나가는 자연광 — 따뜻한 색조 + 흐림 + 소프트라이트 블렌드 */
 .sheen::after {
   content: '';
   position: absolute;
-  top: -25%;
-  bottom: -25%;
+  top: -30%;
+  bottom: -30%;
   left: 0;
-  width: 45%;
+  width: 70%;
   background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255,255,255,0.16) 30%,
-    rgba(255,255,255,0.5) 50%,
-    rgba(255,255,255,0.16) 70%,
-    transparent
+    105deg,
+    transparent 0%,
+    rgba(255,251,240,0.08) 30%,
+    rgba(255,253,247,0.32) 48%,
+    rgba(255,255,255,0.45) 50%,
+    rgba(255,253,247,0.32) 52%,
+    rgba(255,251,240,0.08) 70%,
+    transparent 100%
   );
-  transform: translateX(-160%) skewX(-18deg);
-  animation: metalsheen 4s ease-in-out infinite;
+  filter: blur(8px);
+  mix-blend-mode: soft-light;
+  transform: translateX(-180%);
+  animation: metalsheen 7s cubic-bezier(0.45,0,0.2,1) infinite;
+}
+/* 표면에 고이는 은은한 환경광 — 천천히 숨쉬듯 */
+.sheen::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(ellipse 50% 40% at 38% 30%, rgba(255,252,242,0.18), transparent 60%);
+  mix-blend-mode: soft-light;
+  animation: ambientglow 9s ease-in-out infinite;
 }
 @keyframes metalsheen {
-  0% { transform: translateX(-160%) skewX(-18deg); }
-  60%, 100% { transform: translateX(420%) skewX(-18deg); }
+  0% { transform: translateX(-180%); }
+  55%, 100% { transform: translateX(220%); }
+}
+@keyframes ambientglow {
+  0%, 100% { opacity: 0.5; transform: translate(0, 0); }
+  50% { opacity: 1; transform: translate(6%, 4%); }
 }
 .card-face--back { transform: rotateY(180deg); }
 
@@ -485,7 +516,11 @@ section.cream-dark {
 /* 모바일: 라벨 공간 확보를 위해 카드 축소 + 라벨 글자 축소 */
 @media (max-width: 767px) {
   .callout-stage .card-flip-wrap { max-width: 48% !important; }
-  .callout-label { font-size: 12px; }
+  .callout-label { font-size: 14px; }
+  /* 골드 타입 4종 한 줄 — 좌측 정렬 (넘치면 가로 스크롤, 두 줄 X) */
+  .gold-tabs { gap: 14px; }
+  .gold-tab { font-size: 14px; gap: 6px; padding: 6px 0; }
+  .gold-swatch { width: 16px; height: 16px; }
 }
 .callout-stage .card-flip-wrap {
   max-width: 54%;
@@ -493,7 +528,52 @@ section.cream-dark {
   transform: perspective(1400px) rotateX(12deg) rotateY(-16deg) rotateZ(7deg);
   transform-style: preserve-3d;
 }
-.callout-stage { padding: 28px 0 36px; }
+.callout-stage { padding: 8px 0 36px; }
+
+/* 카드 뒤집기 버튼 — 카드 영역 우측 하단 빈 공간에 오버레이 */
+.flip-btn {
+  position: absolute;
+  right: 0;
+  bottom: 6%;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  color: #fff;
+  font-family: var(--font-ko);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.flip-btn svg {
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+}
+.flip-btn:hover svg { transform: rotate(-180deg); }
+.flip-btn .flip-txt {
+  position: relative;
+  display: inline-block;
+}
+/* 밑줄 슬라이드 인 애니메이션 */
+.flip-btn .flip-txt::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.flip-btn:hover .flip-txt::after { transform: scaleX(1); }
 .callout-dot-in {
   position: absolute;
   width: 7px;
@@ -548,7 +628,7 @@ section.cream-dark {
   background: none;
   border: none;
   font-family: var(--font-ko);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--cream-dim);
   white-space: normal;
@@ -594,7 +674,7 @@ section.cream-dark {
 }
 .symbol-desc-kw {
   font-family: var(--font-ko);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--tobacco-dark);
   margin-bottom: 6px;
@@ -606,14 +686,14 @@ section.cream-dark {
 }
 .symbol-desc-text {
   font-family: var(--font-ko);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--cream-dim);
   line-height: 1.8;
 }
 .flip-hint {
   text-align: center;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.15em;
   color: var(--cream-dim);
   margin-bottom: 36px;
@@ -629,7 +709,7 @@ section.cream-dark {
 
 .card-name-en {
   font-family: var(--font-en);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.35em;
   color: var(--tobacco-light);
@@ -638,15 +718,15 @@ section.cream-dark {
 }
 .card-headline {
   font-family: var(--font-ko);
-  font-size: clamp(18px, 4.5vw, 24px);
-  font-weight: 700;
+  font-size: clamp(20px, 4.5vw, 26px);
+  font-weight: 500;
   color: var(--cream-text);
   line-height: 1.4;
   margin-bottom: 6px;
 }
 .card-subhead {
   font-family: var(--font-serif);
-  font-size: 15px;
+  font-size: 17px;
   font-style: italic;
   color: var(--tobacco);
   margin-bottom: 20px;
@@ -659,7 +739,7 @@ section.cream-dark {
 }
 .card-body {
   font-family: var(--font-ko);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   color: var(--cream-dim);
   line-height: 1.9;
@@ -670,7 +750,7 @@ section.cream-dark {
 /* Symbols */
 .symbols-label {
   font-family: var(--font-ko);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.3em;
   color: var(--tobacco);
@@ -697,7 +777,7 @@ section.cream-dark {
 .symbol-item:hover { background: var(--cream-dark); }
 .symbol-num {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: var(--tobacco);
   min-width: 18px;
@@ -705,7 +785,7 @@ section.cream-dark {
 }
 .symbol-text {
   font-family: var(--font-ko);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--cream-dim);
   line-height: 1.65;
@@ -727,7 +807,7 @@ section.cream-dark {
 }
 .price-label {
   font-family: var(--font-ko);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.15em;
   color: var(--tobacco-pale);
@@ -735,14 +815,14 @@ section.cream-dark {
 }
 .price-value {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 26px;
   color: var(--white);
   font-weight: 400;
 }
-.price-value small { font-size: 13px; color: var(--white-dim); }
+.price-value small { font-size: 15px; color: var(--white-dim); }
 .price-notes {
   font-family: var(--font-ko);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--white-dim);
   line-height: 1.8;
   border-top: 1px solid rgba(255,255,255,0.15);
@@ -752,7 +832,10 @@ section.cream-dark {
 
 /* ── BENEFITS: 황갈색 배경 ── */
 .benefits-section {
-  background: var(--tobacco);
+  background:
+    linear-gradient(rgba(122,96,64,0.86), rgba(92,71,40,0.9)),
+    url('image_06.png') center / cover no-repeat,
+    var(--tobacco);
   padding: 72px 28px;
 }
 .benefits-section .eyebrow { color: var(--tobacco-pale); }
@@ -764,7 +847,7 @@ section.cream-dark {
   flex-direction: column;
   gap: 1px;
   background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.16);
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -774,10 +857,16 @@ section.cream-dark {
   gap: 14px;
   align-items: flex-start;
   padding: 22px 20px;
-  background: rgba(255,255,255,0.04);
-  transition: background 0.2s;
+  background: rgba(40,30,18,0.22);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
 }
-.benefit-item:hover { background: rgba(255,255,255,0.09); }
+.benefit-item:hover {
+  background: rgba(40,30,18,0.42);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
 .benefit-ic {
   height: 40px;
   display: flex;
@@ -791,16 +880,17 @@ section.cream-dark {
   opacity: 0.9;
 }
 .benefit-ic img[src*="valet"] { height: 30px; }
+.benefit-ic img[src*="konacard"] { height: 30px; }
 .benefit-name {
   font-family: var(--font-ko);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--white);
   margin-bottom: 4px;
 }
 .benefit-detail {
   font-family: var(--font-ko);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--white-dim);
   line-height: 1.75;
@@ -811,20 +901,28 @@ section.cream-dark {
   padding: 5px 10px;
   border: 1px solid rgba(255,255,255,0.45);
   background: rgba(255,255,255,0.08);
-  font-size: 13px;
+  font-size: 15px;
   color: #FFFFFF;
   font-weight: 500;
   letter-spacing: 0.03em;
 }
 
 .welcome-box {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(40,30,18,0.22);
+  border: 1px solid rgba(255,255,255,0.16);
   padding: 20px 18px;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+}
+.welcome-box:hover {
+  background: rgba(40,30,18,0.42);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 .welcome-title {
   font-family: var(--font-ko);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: var(--tobacco-pale);
@@ -833,90 +931,113 @@ section.cream-dark {
 }
 .welcome-detail {
   font-family: var(--font-ko);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 300;
   color: var(--white-dim);
   line-height: 1.8;
 }
 
-/* ── FORM ── */
+/* ── FORM (white) ── */
 .form-section {
-  background: var(--cream-dark);
+  background: #FFFFFF;
   padding: 72px 28px;
 }
-.form-group { margin-bottom: 18px; }
+.form-section .eyebrow { color: var(--tobacco-light); }
+.form-section .section-title { color: #1C1410; }
+.form-group { margin-bottom: 22px; }
 .form-label {
   display: block;
   font-family: var(--font-ko);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--tobacco);
-  text-transform: uppercase;
-  margin-bottom: 7px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #2A2420;
+  margin-bottom: 9px;
 }
-.form-label span { color: var(--tobacco-dark); }
+.form-label span { color: #D14343; margin-left: 1px; }
 .form-input, .form-textarea {
   width: 100%;
-  background: var(--cream);
-  border: 1.5px solid var(--cream-dark);
-  padding: 13px 15px;
+  background: #FFFFFF;
+  border: 1px solid #D4D4D4;
+  padding: 14px 16px;
   font-family: var(--font-ko);
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--cream-text);
+  font-size: 17px;
+  font-weight: 400;
+  color: #1C1410;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   -webkit-appearance: none;
   border-radius: 0;
 }
-.form-input::placeholder, .form-textarea::placeholder { color: rgba(107,90,72,0.4); }
-.form-input:focus, .form-textarea:focus { border-color: var(--tobacco); }
-.form-textarea { resize: none; min-height: 96px; line-height: 1.7; }
+.form-input::placeholder, .form-textarea::placeholder { color: #B5ADA0; }
+.form-input:focus, .form-textarea:focus {
+  border-color: #1C1410;
+  box-shadow: 0 0 0 3px rgba(28,20,16,0.08);
+}
+.form-textarea { resize: none; min-height: 120px; line-height: 1.7; }
 
-.agree-wrap { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
+/* 유효성 오류 */
+.form-input.error, .form-textarea.error {
+  border-color: #D14343;
+  box-shadow: 0 0 0 3px rgba(209,67,67,0.08);
+}
+.field-error {
+  display: none;
+  font-family: var(--font-ko);
+  font-size: 15px;
+  font-weight: 400;
+  color: #D14343;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.field-error.show { display: block; }
+
+.agree-wrap { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
 .agree-wrap input[type="checkbox"] {
   appearance: none; -webkit-appearance: none;
-  width: 16px; height: 16px;
+  width: 20px; height: 20px;
   border: 1.5px solid var(--tobacco-light);
-  flex-shrink: 0; margin-top: 3px; cursor: pointer;
+  flex-shrink: 0; margin-top: 2px; cursor: pointer;
   background: transparent; position: relative;
 }
 .agree-wrap input[type="checkbox"]:checked { background: var(--tobacco); border-color: var(--tobacco); }
 .agree-wrap input[type="checkbox"]:checked::after {
   content: '';
   position: absolute;
-  left: 4px; top: 1px;
-  width: 5px; height: 9px;
-  border: 1.5px solid white;
+  left: 6px; top: 2px;
+  width: 6px; height: 11px;
+  border: 2px solid white;
   border-left: none; border-top: none;
   transform: rotate(45deg);
 }
 .agree-label {
   font-family: var(--font-ko);
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--cream-dim);
+  font-size: 16px;
+  font-weight: 400;
+  color: #2A2420;
   line-height: 1.6;
 }
+.agree-label span { color: #D14343; }
 .agree-detail {
   font-family: var(--font-ko);
-  font-size: 12px;
-  color: rgba(107,90,72,0.6);
+  font-size: 14px;
+  color: #8C8478;
   line-height: 1.7;
   padding-left: 26px;
-  margin-bottom: 28px;
+  margin-bottom: 36px;
 }
+#agreeError { padding-left: 26px; margin-bottom: 36px; }
 
 .submit-btn {
   width: 100%;
   padding: 18px;
   background: var(--tobacco);
   border: none;
+  border-radius: 0;
   font-family: var(--font-ko);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   color: var(--white);
   cursor: pointer;
   transition: background 0.25s;
@@ -937,9 +1058,9 @@ section.cream-dark {
 /* Success */
 .form-success { display: none; text-align: center; padding: 48px 0; animation: fadeup 0.5s ease; }
 .form-success.show { display: block; }
-.success-icon { font-size: 28px; color: var(--tobacco); margin-bottom: 16px; }
-.success-title { font-family: var(--font-ko); font-size: 20px; font-weight: 700; color: var(--cream-text); margin-bottom: 10px; }
-.success-msg { font-family: var(--font-ko); font-size: 14px; font-weight: 300; color: var(--cream-dim); line-height: 1.8; }
+.success-icon { font-size: 30px; color: var(--tobacco); margin-bottom: 18px; }
+.success-title { font-family: var(--font-ko); font-size: 22px; font-weight: 700; color: #1C1410; margin-bottom: 12px; }
+.success-msg { font-family: var(--font-ko); font-size: 16px; font-weight: 400; color: #6B5A48; line-height: 1.8; }
 
 /* ── FOOTER ── */
 footer {
@@ -947,8 +1068,8 @@ footer {
   padding: 36px 28px;
   text-align: center;
 }
-.footer-logo { font-family: var(--font-ko); font-size: 14px; font-weight: 700; letter-spacing: 0.3em; color: var(--tobacco-pale); margin-bottom: 8px; }
-.footer-copy { font-size: 11px; color: var(--white-dimmer); letter-spacing: 0.08em; }
+.footer-logo { font-family: var(--font-ko); font-size: 16px; font-weight: 700; letter-spacing: 0.3em; color: var(--tobacco-pale); margin-bottom: 10px; }
+.footer-copy { font-size: 13px; color: var(--white-dimmer); letter-spacing: 0.08em; }
 
 /* ══ [실험] 다섯 가지 이야기 다크 테마 — 원복 시 이 블록 전체 삭제 ══ */
 #cards {
@@ -1005,10 +1126,10 @@ footer {
     drop-shadow(0 6px 14px rgba(0,0,0,0.4));
 }
 #cards .price-box { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
-#cards .price-label { color: rgba(255,255,255,0.65); font-size: 13px; }
-#cards .price-value { color: #FFFFFF; font-size: 28px; }
-#cards .price-value small { color: rgba(255,255,255,0.6); font-size: 15px; }
-#cards .price-notes { color: rgba(255,255,255,0.75); font-size: 14px; border-top-color: rgba(255,255,255,0.2); }
+#cards .price-label { color: rgba(255,255,255,0.65); font-size: 15px; }
+#cards .price-value { color: #FFFFFF; font-size: 30px; }
+#cards .price-value small { color: rgba(255,255,255,0.6); font-size: 17px; }
+#cards .price-notes { color: rgba(255,255,255,0.75); font-size: 16px; border-top-color: rgba(255,255,255,0.2); }
 /* ══ [실험] 다크 테마 끝 ══ */
 
 /* ── FORM GRID ── */
@@ -1037,7 +1158,7 @@ footer {
   .card-stage {
     position: sticky;
     top: 90px;
-    padding: 32px 0 0;
+    padding: 8px 0 0;
   }
   .card-flip-wrap { max-width: 340px; margin: 0 auto; }
 
@@ -1050,6 +1171,7 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
+    margin-bottom: 22px;
   }
   .form-grid .form-group { margin-bottom: 0; }
 }
@@ -1133,12 +1255,12 @@ footer {
             <div class="callout-overlay" id="calloutOverlay">
               <svg class="callout-svg" id="calloutSvg"></svg>
             </div>
+            <button class="flip-btn" id="flipBtn" onclick="event.stopPropagation(); toggleFlip()" aria-label="카드 뒤집기">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+              <span class="flip-txt" id="flipTxt">뒷면 보기</span>
+            </button>
           </div>
           <div class="symbol-desc" id="symbolDesc"></div>
-          <p class="flip-hint" style="margin-top:16px">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-            카드를 탭하면 뒷면을 볼 수 있습니다
-          </p>
         </div>
       </div>
 
@@ -1151,7 +1273,7 @@ footer {
       <div class="price-grid">
         <div>
           <p class="price-label">연회비</p>
-          <p class="price-value">1,000,000<small> 원</small></p>
+          <p class="price-value">2,000,000<small> 원</small></p>
         </div>
         <div>
           <p class="price-label">카드 구매가</p>
@@ -1176,34 +1298,42 @@ footer {
 
     <div class="benefit-list">
       <div class="benefit-item">
+        <div class="benefit-ic"><img src="ic/img_logo_konacard.svg" alt="코나 마일리지"></div>
+        <div>
+          <p class="benefit-name">코나 마일리지</p>
+          <p class="benefit-detail">결제금액 2,000원 = 1 마일리지<br>연 최대 50,000 마일리지 적립</p>
+          <span class="benefit-tag">항공권 교환 가능</span>
+        </div>
+      </div>
+      <div class="benefit-item">
         <div class="benefit-ic"><img src="ic/img_logo_the_hanok_heritage.svg" alt="더한옥헤리티지"></div>
         <div>
           <p class="benefit-name">한옥호텔 할인</p>
-          <p class="benefit-detail">더한옥헤리티지 숙박 30% 할인<br>연 최대 100만 원 (강원도 영월)</p>
-          <span class="benefit-tag">연 최대 1,000,000원</span>
+          <p class="benefit-detail">더한옥헤리티지 숙박 할인<br>호텔 30% · 독채 20%</p>
+          <span class="benefit-tag">강원도 영월</span>
         </div>
       </div>
       <div class="benefit-item">
         <div class="benefit-ic"><img src="ic/img_logo_the_lounge.svg" alt="공항 라운지"></div>
         <div>
           <p class="benefit-name">공항 라운지</p>
-          <p class="benefit-detail">연 4회 무료 이용<br>인천 T1/T2 · 김포 · 김해</p>
-          <span class="benefit-tag">마티나 골드 라운지(인천T2) 포함</span>
+          <p class="benefit-detail">연 4회 무료 이용<br>마티나/스카이허브 2회 · 마티나골드(인천T2) 2회</p>
+          <span class="benefit-tag">인천 · 김포 · 김해</span>
         </div>
       </div>
       <div class="benefit-item">
         <div class="benefit-ic"><img src="ic/img_valet_parking.svg" alt="호텔 발렛파킹"></div>
         <div>
           <p class="benefit-name">호텔 발렛파킹</p>
-          <p class="benefit-detail">연 12회 무료 이용<br>그랜드워커힐 · 반얀트리 · 앰배서더 등</p>
-          <span class="benefit-tag">인천·김포공항 주차 포함</span>
+          <p class="benefit-detail">그랜드워커힐 · 비스타워커힐<br>반얀트리 · 앰배서더 등 호텔 및 공항</p>
+          <span class="benefit-tag">연 300,000원 혜택</span>
         </div>
       </div>
     </div>
 
     <div class="welcome-box">
       <p class="welcome-title">Welcome Mileage</p>
-      <p class="welcome-detail">1년차 20,000 마일리지 즉시 지급<br>2~5년차 매년 10,000 마일리지 즉시 적립</p>
+      <p class="welcome-detail">1년차 20,000 마일리지 즉시 지급 · 2~5년차 매년 10,000 마일리지 지급<br>적립 마일리지로 항공권 교환 가능 (대한항공 프레스티지 편도 좌석 상당 기준)</p>
     </div>
   </div>
 </div>
@@ -1215,31 +1345,35 @@ footer {
     <h2 class="section-title">전담 매니저가<br>직접 연락드립니다</h2>
     <div class="rule"></div>
 
-    <form id="consultForm" onsubmit="submitForm(event)">
+    <form id="consultForm" onsubmit="submitForm(event)" novalidate>
       <div class="form-grid">
         <div class="form-group">
-          <label class="form-label">성함 <span>*</span></label>
-          <input class="form-input" type="text" placeholder="홍길동" required>
+          <label class="form-label" for="fName">성함 <span>*</span></label>
+          <input class="form-input" id="fName" type="text" placeholder="홍길동">
+          <p class="field-error" data-for="fName"></p>
         </div>
         <div class="form-group">
-          <label class="form-label">연락처 <span>*</span></label>
-          <input class="form-input" type="tel" placeholder="010-0000-0000" required>
+          <label class="form-label" for="fPhone">연락처 <span>*</span></label>
+          <input class="form-input" id="fPhone" type="tel" placeholder="010-0000-0000">
+          <p class="field-error" data-for="fPhone"></p>
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label">이메일</label>
-        <input class="form-input" type="email" placeholder="example@email.com">
+        <label class="form-label" for="fEmail">이메일</label>
+        <input class="form-input" id="fEmail" type="email" placeholder="example@email.com">
+        <p class="field-error" data-for="fEmail"></p>
       </div>
       <div class="form-group">
-        <label class="form-label">문의 내용</label>
-        <textarea class="form-textarea" placeholder="관심 카드, 문의 사항을 자유롭게 작성해 주세요."></textarea>
+        <label class="form-label" for="fMsg">문의 내용</label>
+        <textarea class="form-textarea" id="fMsg" placeholder="관심 카드, 문의 사항을 자유롭게 작성해 주세요."></textarea>
       </div>
 
       <div class="agree-wrap">
-        <input type="checkbox" id="agreeCheck" required>
-        <label class="agree-label" for="agreeCheck">개인정보 수집·이용에 동의합니다. (필수)</label>
+        <input type="checkbox" id="agreeCheck">
+        <label class="agree-label" for="agreeCheck">개인정보 수집·이용에 동의합니다. <span>(필수)</span></label>
       </div>
       <p class="agree-detail">수집 항목: 성함, 연락처, 이메일, 문의 내용 &nbsp;/&nbsp; 목적: 구매 상담 연결 &nbsp;/&nbsp; 보유: 상담 완료 후 1년</p>
+      <p class="field-error" id="agreeError"></p>
 
       <button class="submit-btn" type="submit"><span>상담 신청하기 →</span></button>
     </form>
@@ -1319,6 +1453,7 @@ function renderCard() {
   renderCallouts();
   document.getElementById('cardFlip').classList.remove('flipped');
   document.getElementById('calloutStage').classList.remove('flipped-state');
+  const ft = document.getElementById('flipTxt'); if (ft) ft.textContent = '뒷면 보기';
   const c = document.getElementById('cardContent');
   c.style.animation='none'; c.offsetHeight; c.style.animation='';
 }
@@ -1500,6 +1635,7 @@ calloutObserver.observe(document.getElementById('calloutStage'));
 function toggleFlip() {
   const flipped = document.getElementById('cardFlip').classList.toggle('flipped');
   document.getElementById('calloutStage').classList.toggle('flipped-state', flipped);
+  document.getElementById('flipTxt').textContent = flipped ? '앞면 보기' : '뒷면 보기';
 }
 
 function moveTabIndicator() {
@@ -1527,11 +1663,68 @@ document.querySelectorAll('.gold-tab').forEach(t => t.addEventListener('click', 
   renderCard();
 }));
 
+function setFieldError(id, msg) {
+  const input = document.getElementById(id);
+  const err = document.querySelector(`.field-error[data-for="${id}"]`);
+  if (msg) {
+    input.classList.add('error');
+    if (err) { err.textContent = msg; err.classList.add('show'); }
+  } else {
+    input.classList.remove('error');
+    if (err) { err.textContent = ''; err.classList.remove('show'); }
+  }
+}
+
+function clearFieldError(id) { setFieldError(id, ''); }
+
 function submitForm(e) {
   e.preventDefault();
+  let firstInvalid = null;
+
+  // 성함
+  const name = document.getElementById('fName').value.trim();
+  if (!name) { setFieldError('fName', '성함을 입력해 주세요.'); firstInvalid = firstInvalid || 'fName'; }
+  else clearFieldError('fName');
+
+  // 연락처
+  const phone = document.getElementById('fPhone').value.trim();
+  if (!phone) { setFieldError('fPhone', '연락처를 입력해 주세요.'); firstInvalid = firstInvalid || 'fPhone'; }
+  else if (!/^01[0-9]-?\d{3,4}-?\d{4}$/.test(phone.replace(/\s/g,''))) { setFieldError('fPhone', '올바른 연락처 형식이 아닙니다.'); firstInvalid = firstInvalid || 'fPhone'; }
+  else clearFieldError('fPhone');
+
+  // 이메일 (선택 — 입력 시 형식 검사)
+  const email = document.getElementById('fEmail').value.trim();
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setFieldError('fEmail', '올바른 이메일 형식이 아닙니다.'); firstInvalid = firstInvalid || 'fEmail'; }
+  else clearFieldError('fEmail');
+
+  // 개인정보 동의
+  const agree = document.getElementById('agreeCheck');
+  const agreeErr = document.getElementById('agreeError');
+  if (!agree.checked) { agreeErr.textContent = '개인정보 수집·이용에 동의해 주세요.'; agreeErr.classList.add('show'); firstInvalid = firstInvalid || 'agreeCheck'; }
+  else { agreeErr.textContent = ''; agreeErr.classList.remove('show'); }
+
+  if (firstInvalid) {
+    const el = document.getElementById(firstInvalid);
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (el.focus) el.focus({ preventScroll: true });
+    return;
+  }
+
   document.getElementById('consultForm').style.display = 'none';
   document.getElementById('formSuccess').classList.add('show');
 }
+
+// 입력 시 해당 필드 오류 즉시 해제
+['fName','fPhone','fEmail'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', () => clearFieldError(id));
+});
+document.getElementById('agreeCheck').addEventListener('change', () => {
+  if (document.getElementById('agreeCheck').checked) {
+    const ae = document.getElementById('agreeError');
+    ae.textContent = ''; ae.classList.remove('show');
+  }
+});
 
 renderCard();
 
