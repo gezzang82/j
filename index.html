@@ -380,6 +380,12 @@ section.cream-dark {
 }
 .gold-tabs::-webkit-scrollbar { display: none; }
 .gold-tab { white-space: nowrap; flex-shrink: 0; }
+/* 골드 라벨: 기본은 풀 네임, 좁은 폰에서는 축약본으로 교체 */
+.gt-short { display: none; }
+@media (max-width: 480px) {
+  .gt-full { display: none; }
+  .gt-short { display: inline; }
+}
 .gold-tab {
   display: inline-flex;
   align-items: center;
@@ -1239,10 +1245,10 @@ footer {
 
     <!-- Gold tabs -->
     <div class="gold-tabs">
-      <button class="gold-tab active" data-gold="gold_24K"><span class="gold-swatch"></span>Gold 24K</button>
-      <button class="gold-tab" data-gold="gold_18K"><span class="gold-swatch"></span>Gold 18K</button>
-      <button class="gold-tab" data-gold="whitegold"><span class="gold-swatch"></span>White Gold</button>
-      <button class="gold-tab" data-gold="rosegold"><span class="gold-swatch"></span>Rose Gold</button>
+      <button class="gold-tab active" data-gold="gold_24K"><span class="gold-swatch"></span><span class="gt-full">Gold 24K</span><span class="gt-short">24K</span></button>
+      <button class="gold-tab" data-gold="gold_18K"><span class="gold-swatch"></span><span class="gt-full">Gold 18K</span><span class="gt-short">18K</span></button>
+      <button class="gold-tab" data-gold="whitegold"><span class="gold-swatch"></span><span class="gt-full">White Gold</span><span class="gt-short">White</span></button>
+      <button class="gold-tab" data-gold="rosegold"><span class="gold-swatch"></span><span class="gt-full">Rose Gold</span><span class="gt-short">Rose</span></button>
     </div>
 
     <div class="card-layout">
