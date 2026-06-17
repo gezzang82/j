@@ -380,12 +380,6 @@ section.cream-dark {
 }
 .gold-tabs::-webkit-scrollbar { display: none; }
 .gold-tab { white-space: nowrap; flex-shrink: 0; }
-/* 골드 라벨: 기본은 풀 네임, 좁은 폰에서는 축약본으로 교체 */
-.gt-short { display: none; }
-@media (max-width: 480px) {
-  .gt-full { display: none; }
-  .gt-short { display: inline; }
-}
 .gold-tab {
   display: inline-flex;
   align-items: center;
@@ -533,9 +527,9 @@ section.cream-dark {
   .callout-stage .card-flip-wrap { max-width: 48% !important; }
   .callout-label { font-size: 14px; }
   /* 골드 타입 4종 한 줄 — 화면 폭에 맞춰 균등 배치 */
-  .gold-tabs { gap: 20px; justify-content: flex-start; padding: 4px 0; margin-left: 0; }
-  .gold-tab { font-size: 12px; gap: 8px; padding: 6px 0; letter-spacing: -0.03em; }
-  .gold-swatch { width: 14px; height: 14px; }
+  .gold-tabs { gap: 16px; justify-content: flex-start; padding: 4px 0; margin-left: 0; }
+  .gold-tab { font-size: 13px; gap: 9px; padding: 6px 0; letter-spacing: 0; }
+  .gold-swatch { width: 16px; height: 16px; }
 }
 .callout-stage .card-flip-wrap {
   max-width: 54%;
@@ -1245,10 +1239,10 @@ footer {
 
     <!-- Gold tabs -->
     <div class="gold-tabs">
-      <button class="gold-tab active" data-gold="gold_24K"><span class="gold-swatch"></span><span class="gt-full">Gold 24K</span><span class="gt-short">24K</span></button>
-      <button class="gold-tab" data-gold="gold_18K"><span class="gold-swatch"></span><span class="gt-full">Gold 18K</span><span class="gt-short">18K</span></button>
-      <button class="gold-tab" data-gold="whitegold"><span class="gold-swatch"></span><span class="gt-full">White Gold</span><span class="gt-short">White</span></button>
-      <button class="gold-tab" data-gold="rosegold"><span class="gold-swatch"></span><span class="gt-full">Rose Gold</span><span class="gt-short">Rose</span></button>
+      <button class="gold-tab active" data-gold="gold_24K"><span class="gold-swatch"></span>Bright</button>
+      <button class="gold-tab" data-gold="gold_18K"><span class="gold-swatch"></span>Pure</button>
+      <button class="gold-tab" data-gold="whitegold"><span class="gold-swatch"></span>White</button>
+      <button class="gold-tab" data-gold="rosegold"><span class="gold-swatch"></span>Rose</button>
     </div>
 
     <div class="card-layout">
